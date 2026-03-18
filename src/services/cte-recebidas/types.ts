@@ -30,9 +30,11 @@ export interface CteDesacordoParams {
   observacoes: string;
 }
 
+export type CteDesacordoStatus = "evento_registrado" | "erro_autorizacao";
+
 export interface CteDesacordoResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
-  status: string;
+  status: CteDesacordoStatus;
   protocolo: string;
 }

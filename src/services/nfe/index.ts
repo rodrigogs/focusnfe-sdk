@@ -25,5 +25,6 @@ export type {
   NfeItem,
   NfeNotaReferenciada,
   NfeResponse,
+  NfeStatus,
   NfeWebhookResponse,
 } from "./types.js";

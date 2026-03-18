@@ -159,11 +159,20 @@ export interface NfeCreateParams {
   [key: string]: unknown;
 }
 
+// --- Enums ---
+
+export type NfeStatus =
+  | "processando_autorizacao"
+  | "autorizado"
+  | "cancelado"
+  | "erro_autorizacao"
+  | "denegado";
+
 // --- Response ---
 
 export interface NfeResponse {
   ref?: string;
-  status?: string;
+  status?: NfeStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
   chave_nfe?: string;

@@ -17,6 +17,7 @@ export type {
   ItensListaServicoParams,
   MunicipioQueryParams,
   MunicipioResult,
+  MunicipioStatusNfse,
   NcmQueryParams,
   NcmResult,
 } from "./types.js";

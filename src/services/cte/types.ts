@@ -189,12 +189,20 @@ export interface CteOsCreateParams {
   [key: string]: unknown;
 }
 
+// ── CTe Enums ───────────────────────────────────────────────────────
+
+export type CteStatus =
+  | "processando_autorizacao"
+  | "autorizado"
+  | "cancelado"
+  | "erro_autorizacao";
+
 // ── CTe Response ────────────────────────────────────────────────────
 
 export interface CteResponse {
   cnpj_emitente: string;
   ref: string;
-  status: string;
+  status: CteStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
   chave?: string;
@@ -223,7 +231,7 @@ export interface CteCancelParams {
 export interface CteCancelResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
-  status: string;
+  status: CteStatus;
   caminho_xml?: string;
 }
 
@@ -240,7 +248,7 @@ export interface CteCartaCorrecaoParams {
 export interface CteCartaCorrecaoResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
-  status: string;
+  status: CteStatus;
   caminho_xml?: string;
   numero_carta_correcao?: number;
 }
@@ -254,7 +262,7 @@ export interface CtePrestacaoDesacordoParams {
 export interface CtePrestacaoDesacordoResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
-  status: string;
+  status: CteStatus;
   caminho_xml?: string;
 }
 
@@ -267,7 +275,7 @@ export interface CteRegistroMultimodalParams {
 export interface CteRegistroMultimodalResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
-  status: string;
+  status: CteStatus;
   caminho_xml?: string;
 }
 
@@ -280,12 +288,12 @@ export interface CteDadosGtvParams {
 export interface CteDadosGtvResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
-  status: string;
+  status: CteStatus;
   caminho_xml?: string;
 }
 
 // ── CTe Webhook ─────────────────────────────────────────────────────
 
 export interface CteWebhookResponse {
-  status: string;
+  status: CteStatus;
 }

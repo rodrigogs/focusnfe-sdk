@@ -7,10 +7,20 @@ export interface NfcomCreateParams {
   [key: string]: unknown;
 }
 
+// --- Enums ---
+
+export type NfcomStatus =
+  | "processando_autorizacao"
+  | "autorizado"
+  | "cancelado"
+  | "erro_autorizacao";
+
+// --- Response ---
+
 export interface NfcomResponse {
   cnpj_emitente?: string;
   ref?: string;
-  status: string;
+  status: NfcomStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
   chave?: string;
@@ -35,7 +45,7 @@ export interface NfcomCancelParams {
 }
 
 export interface NfcomCancelResponse {
-  status: string;
+  status: NfcomStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
   caminho_xml?: string;

@@ -34,6 +34,7 @@ export type {
   NfeItem,
   NfeNotaReferenciada,
   NfeResponse,
+  NfeStatus,
   NfeWebhookResponse,
 } from "./services/nfe/index.js";
 
@@ -53,6 +54,7 @@ export type {
   NfceInutilizacoesListParams,
   NfceItem,
   NfceResponse,
+  NfceStatus,
 } from "./services/nfce/index.js";
 
 // NFSe
@@ -66,6 +68,7 @@ export type {
   NfseResponse,
   NfseResponseError,
   NfseServico,
+  NfseStatus,
   NfseTomador,
   NfseTomadorEndereco,
 } from "./services/nfse/index.js";
@@ -77,6 +80,7 @@ export type {
   NfseNacionalCreateParams,
   NfseNacionalResponse,
   NfseNacionalResponseError,
+  NfseNacionalStatus,
 } from "./services/nfse-nacional/index.js";
 
 // CTe
@@ -99,6 +103,7 @@ export type {
   CteRegistroMultimodalResponse,
   CteResponse,
   CteSeguroCarga,
+  CteStatus,
   CteWebhookResponse,
 } from "./services/cte/index.js";
 
@@ -121,6 +126,7 @@ export type {
   MdfeNotaFiscal,
   MdfePercurso,
   MdfeResponse,
+  MdfeStatus,
 } from "./services/mdfe/index.js";
 
 // NFCom
@@ -130,6 +136,7 @@ export type {
   NfcomCreateOptions,
   NfcomCreateParams,
   NfcomResponse,
+  NfcomStatus,
 } from "./services/nfcom/index.js";
 
 // NFe Recebidas
@@ -145,6 +152,7 @@ export type {
 export type {
   CteDesacordoParams,
   CteDesacordoResponse,
+  CteDesacordoStatus,
   CteRecebida,
   CteRecebidasListParams,
 } from "./services/cte-recebidas/index.js";
@@ -192,6 +200,7 @@ export type {
   ItensListaServicoParams,
   MunicipioQueryParams,
   MunicipioResult,
+  MunicipioStatusNfse,
   NcmQueryParams,
   NcmResult,
 } from "./services/consultas/index.js";

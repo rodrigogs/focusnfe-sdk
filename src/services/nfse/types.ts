@@ -89,6 +89,16 @@ export interface NfseCreateParams {
   intermediario?: NfseIntermediario;
 }
 
+// --- Enums ---
+
+export type NfseStatus =
+  | "processando_autorizacao"
+  | "autorizado"
+  | "cancelado"
+  | "erro_autorizacao";
+
+// --- Response ---
+
 export interface NfseResponseError {
   codigo?: string;
   mensagem?: string;
@@ -98,7 +108,7 @@ export interface NfseResponseError {
 export interface NfseResponse {
   cnpj_prestador?: string;
   ref?: string;
-  status: string;
+  status: NfseStatus;
   numero?: string;
   numero_rps?: string;
   serie_rps?: string;
@@ -125,6 +135,6 @@ export interface NfseEmailParams {
 }
 
 export interface NfseCancelResponse {
-  status: string;
+  status: NfseStatus;
   erros?: NfseResponseError[];
 }

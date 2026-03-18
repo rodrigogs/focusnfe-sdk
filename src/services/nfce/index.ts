@@ -14,4 +14,5 @@ export type {
   NfceInutilizacoesListParams,
   NfceItem,
   NfceResponse,
+  NfceStatus,
 } from "./types.js";

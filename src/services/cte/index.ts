@@ -18,5 +18,6 @@ export type {
   CteRegistroMultimodalResponse,
   CteResponse,
   CteSeguroCarga,
+  CteStatus,
   CteWebhookResponse,
 } from "./types.js";

@@ -28,6 +28,16 @@ export interface NfseNacionalCreateParams {
   tipo_retencao_iss?: string | number;
 }
 
+// --- Enums ---
+
+export type NfseNacionalStatus =
+  | "processando_autorizacao"
+  | "autorizado"
+  | "cancelado"
+  | "erro_autorizacao";
+
+// --- Response ---
+
 export interface NfseNacionalResponseError {
   codigo?: string;
   mensagem?: string;
@@ -37,7 +47,7 @@ export interface NfseNacionalResponseError {
 export interface NfseNacionalResponse {
   cnpj_prestador?: string;
   ref?: string;
-  status: string;
+  status: NfseNacionalStatus;
   numero?: string;
   numero_rps?: string;
   serie_rps?: string;
@@ -56,6 +66,6 @@ export interface NfseNacionalCancelParams {
 }
 
 export interface NfseNacionalCancelResponse {
-  status: string;
+  status: NfseNacionalStatus;
   erros?: NfseNacionalResponseError[];
 }

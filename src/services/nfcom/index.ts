@@ -5,4 +5,5 @@ export type {
   NfcomCreateOptions,
   NfcomCreateParams,
   NfcomResponse,
+  NfcomStatus,
 } from "./types.js";

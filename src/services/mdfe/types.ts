@@ -54,12 +54,21 @@ export interface MdfeCreateParams {
   [key: string]: unknown;
 }
 
+// ── MDFe Enums ──────────────────────────────────────────────────────
+
+export type MdfeStatus =
+  | "processando_autorizacao"
+  | "autorizado"
+  | "cancelado"
+  | "encerrado"
+  | "erro_autorizacao";
+
 // ── MDFe Response ───────────────────────────────────────────────────
 
 export interface MdfeResponse {
   cnpj_emitente: string;
   ref: string;
-  status: string;
+  status: MdfeStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
   chave?: string;
@@ -90,7 +99,7 @@ export interface MdfeCancelParams {
 export interface MdfeCancelResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
-  status: string;
+  status: MdfeStatus;
   caminho_xml?: string;
 }
 
@@ -104,7 +113,7 @@ export interface MdfeCondutorParams {
 export interface MdfeCondutorResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
-  status: string;
+  status: MdfeStatus;
   caminho_xml?: string;
 }
 
@@ -126,7 +135,7 @@ export interface MdfeDfeParams {
 export interface MdfeDfeResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
-  status: string;
+  status: MdfeStatus;
   caminho_xml?: string;
 }
 
@@ -141,6 +150,6 @@ export interface MdfeEncerrarParams {
 export interface MdfeEncerrarResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
-  status: string;
+  status: MdfeStatus;
   caminho_xml?: string;
 }

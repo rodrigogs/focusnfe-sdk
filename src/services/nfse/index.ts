@@ -9,6 +9,7 @@ export type {
   NfseResponse,
   NfseResponseError,
   NfseServico,
+  NfseStatus,
   NfseTomador,
   NfseTomadorEndereco,
 } from "./types.js";

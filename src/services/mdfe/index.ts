@@ -17,4 +17,5 @@ export type {
   MdfeNotaFiscal,
   MdfePercurso,
   MdfeResponse,
+  MdfeStatus,
 } from "./types.js";

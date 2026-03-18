@@ -94,11 +94,20 @@ export interface CnaeResult {
 
 // --- Municipios ---
 
+export type MunicipioStatusNfse =
+  | "ativo"
+  | "fora_do_ar"
+  | "pausado"
+  | "em_implementacao"
+  | "em_reimplementacao"
+  | "inativo"
+  | "nao_implementado";
+
 export interface MunicipioQueryParams {
   sigla_uf?: string;
   nome_municipio?: string;
   nome?: string;
-  status_nfse?: string;
+  status_nfse?: MunicipioStatusNfse;
   offset?: number;
 }
 
@@ -117,7 +126,7 @@ export interface MunicipioResult {
   codigo_cnae_obrigatorio_nfse?: boolean | null;
   item_lista_servico_obrigatorio_nfse?: boolean | null;
   codigo_tributario_municipio_obrigatorio_nfse?: boolean | null;
-  status_nfse?: string | null;
+  status_nfse?: MunicipioStatusNfse | null;
   data_previsao_reimplementacao_nfse?: string | null;
   ultima_emissao_nfse?: string | null;
 }

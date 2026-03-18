@@ -110,11 +110,19 @@ export interface NfceCreateParams {
   [key: string]: unknown;
 }
 
+// --- Enums ---
+
+export type NfceStatus =
+  | "processando_autorizacao"
+  | "autorizado"
+  | "cancelado"
+  | "erro_autorizacao";
+
 // --- Response ---
 
 export interface NfceResponse {
   ref?: string;
-  status?: string;
+  status?: NfceStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
   chave_nfe?: string;

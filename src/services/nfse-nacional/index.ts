@@ -5,4 +5,5 @@ export type {
   NfseNacionalCreateParams,
   NfseNacionalResponse,
   NfseNacionalResponseError,
+  NfseNacionalStatus,
 } from "./types.js";
