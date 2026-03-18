@@ -231,6 +231,8 @@ Conhecimentos de transporte eletronicos recebidos pela empresa. O servico permit
 **Evento de Desacordo:**
 O desacordo e um evento fiscal que registra a discordancia do tomador do servico com a prestacao descrita no CTe. Ao registrar desacordo, o campo `observacoes` deve conter a justificativa detalhada.
 
+**Status do Desacordo (`CteDesacordoStatus`)** Os status possiveis sao: `evento_registrado`, `erro_autorizacao`.
+
 ### Metodos
 
 | Metodo | Descricao |
@@ -349,7 +351,7 @@ interface CteDesacordoParams {
 interface CteDesacordoResponse {
   status_sefaz: string
   mensagem_sefaz: string
-  status: string
+  status: CteDesacordoStatus
   protocolo: string
 }
 ```

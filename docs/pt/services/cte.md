@@ -17,6 +17,10 @@ Todas as operacoes utilizam uma referencia unica (`ref`). A mesma `ref` identifi
 
 A emissao de CTe e assincrona. Utilize `get()` para consultar o status ate que seja `autorizado` ou `erro_autorizacao`.
 
+**Status (`CteStatus`)**
+
+Os status possiveis sao: `processando_autorizacao`, `autorizado`, `cancelado`, `erro_autorizacao`.
+
 **Modais de Transporte**
 
 O CTe suporta diversos modais: rodoviario, aereo, aquaviario, ferroviario, dutoviario e multimodal. Cada modal possui campos especificos informados nos objetos `modal_rodoviario`, `modal_aereo`, etc.
@@ -177,7 +181,7 @@ console.log('Ref:', cteOs.ref);
 const cte = await client.cte.get('ref-cte-001');
 
 console.log('Status:', cte.status);
-console.log('Chave:', cte.chave_cte);
+console.log('Chave:', cte.chave);
 console.log('Numero:', cte.numero);
 console.log('DACTe:', cte.caminho_dacte);
 console.log('XML:', cte.caminho_xml);
@@ -206,18 +210,9 @@ console.log('XML:', cancelamento.caminho_xml);
 
 ```typescript
 const cc = await client.cte.cartaCorrecao('ref-cte-001', {
-  correcoes: [
-    {
-      grupo_corrigido: 'ide',
-      campo_corrigido: 'natOp',
-      valor_corrigido: 'Prestacao de servico de transporte interestadual',
-    },
-    {
-      grupo_corrigido: 'rem',
-      campo_corrigido: 'xNome',
-      valor_corrigido: 'Empresa Remetente Corrigida Ltda',
-    },
-  ],
+  grupo_corrigido: 'ide',
+  campo_corrigido: 'natOp',
+  valor_corrigido: 'Prestacao de servico de transporte interestadual',
 });
 
 console.log('Status:', cc.status);
@@ -326,10 +321,10 @@ interface CteOsCreateParams {
 interface CteResponse {
   cnpj_emitente: string;
   ref: string;
-  status: string;
+  status: CteStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
-  chave_cte?: string;
+  chave?: string;
   numero?: string;
   serie?: string;
   modelo?: string;
@@ -355,10 +350,6 @@ interface CteCancelParams {
 
 ```typescript
 interface CteCartaCorrecaoParams {
-  correcoes: CteCorrecao[];
-}
-
-interface CteCorrecao {
   grupo_corrigido?: string;
   campo_corrigido: string;
   valor_corrigido: string;
@@ -378,7 +369,7 @@ interface CtePrestacaoDesacordoParams {
 ## Notas Importantes
 
 1. **Processamento assincrono**: Apos `create()` ou `createOs()`, consulte `get()` ate o status final.
-2. **Carta de Correcao estruturada**: Diferente da NFe, informe grupo, campo e valor individualmente no array `correcoes`.
+2. **Carta de Correcao estruturada**: Diferente da NFe, informe grupo, campo e valor individualmente. Cada chamada corrige um campo; para corrigir multiplos campos, faca chamadas separadas (a ultima substitui as anteriores).
 3. **Cancelamento**: Deve ser realizado dentro do prazo legal. Requer justificativa com minimo de 15 caracteres.
 4. **Desacordo**: O evento de prestacao em desacordo e registrado pelo tomador quando discorda do servico prestado.
 5. **Modais**: Informe apenas o objeto do modal correspondente ao campo `modal` (ex: `modal_rodoviario` para modal `01`).

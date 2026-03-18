@@ -16,6 +16,8 @@ Assim como a NFe, todas as operacoes utilizam uma referencia unica (`ref`) defin
 
 A NFCe suporta emissao em contingencia offline. Quando a SEFAZ esta indisponivel, a nota pode ser emitida localmente e transmitida posteriormente. Os campos `contingencia_offline` e `contingencia_offline_efetivada` na resposta indicam o estado da contingencia.
 
+**Status (`NfceStatus`)** Os status possiveis sao: `processando_autorizacao`, `autorizado`, `cancelado`, `erro_autorizacao`.
+
 **Sem Reenvio de Webhook**
 
 A NFCe nao possui o metodo `resendWebhook()`, uma vez que o processamento e sincrono e a resposta e imediata.
@@ -208,7 +210,7 @@ interface NfceCreateParams {
 ```typescript
 interface NfceResponse {
   ref?: string;
-  status?: string;
+  status?: NfceStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
   chave_nfe?: string;

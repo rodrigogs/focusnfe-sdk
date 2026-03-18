@@ -16,6 +16,8 @@ A emissao de NFe e assincrona. Ao chamar `create()`, a nota entra em fila de pro
 
 Ao consultar uma NFe com `get(ref, true)`, a resposta inclui os objetos completos de requisicao e protocolo (`requisicao_nota_fiscal`, `protocolo_nota_fiscal`, etc.), uteis para depuracao e auditoria.
 
+**Status (`NfeStatus`)** Os status possiveis sao: `processando_autorizacao`, `autorizado`, `cancelado`, `erro_autorizacao`, `denegado`.
+
 **ECONF (Conciliacao Financeira)**
 
 O evento de conciliacao financeira (ECONF) permite registrar os detalhes de pagamento efetivamente recebidos apos a emissao da nota, conforme exigencia do fisco.
@@ -302,7 +304,7 @@ interface NfeCreateParams {
 ```typescript
 interface NfeResponse {
   ref?: string;
-  status?: string;
+  status?: NfeStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
   chave_nfe?: string;

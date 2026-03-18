@@ -16,6 +16,8 @@ Assim como os demais documentos fiscais, a NFSe Nacional utiliza uma referencia 
 
 A emissao e assincrona. Utilize `get()` para consultar o status ate que seja `autorizado` ou `erro_autorizacao`.
 
+**Status (`NfseNacionalStatus`)** Os status possiveis sao: `processando_autorizacao`, `autorizado`, `cancelado`, `erro_autorizacao`.
+
 **Estrutura Simplificada**
 
 Diferente da NFSe municipal, a NFSe Nacional utiliza uma estrutura mais plana, sem objetos aninhados de prestador, tomador e servico. Os dados sao informados diretamente nos campos da requisicao.
@@ -143,7 +145,7 @@ interface NfseNacionalCreateParams {
 interface NfseNacionalResponse {
   cnpj_prestador?: string;
   ref?: string;
-  status: string;
+  status: NfseNacionalStatus;
   numero?: string;
   numero_rps?: string;
   serie_rps?: string;

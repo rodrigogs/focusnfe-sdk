@@ -16,6 +16,8 @@ Todas as operacoes utilizam uma referencia unica (`ref`) definida por voce ao cr
 
 A emissao de MDFe e assincrona. Utilize `get()` para consultar o status ate que seja `autorizado` ou `erro_autorizacao`.
 
+**Status (`MdfeStatus`)** Os status possiveis sao: `processando_autorizacao`, `autorizado`, `cancelado`, `encerrado`, `erro_autorizacao`.
+
 **Contingencia**
 
 O MDFe pode ser emitido em contingencia quando a SEFAZ esta indisponivel. Passe `{ contingencia: true }` no terceiro parametro de `create()`.
@@ -136,7 +138,7 @@ console.log('Status:', mdfe.status);
 const mdfe = await client.mdfe.get('ref-mdfe-001');
 
 console.log('Status:', mdfe.status);
-console.log('Chave:', mdfe.chave_mdfe);
+console.log('Chave:', mdfe.chave);
 console.log('Numero:', mdfe.numero);
 console.log('DAMDFe:', mdfe.caminho_damdfe);
 console.log('XML:', mdfe.caminho_xml);
@@ -251,10 +253,10 @@ interface MdfeCreateOptions {
 interface MdfeResponse {
   cnpj_emitente: string;
   ref: string;
-  status: string;
+  status: MdfeStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
-  chave_mdfe?: string;
+  chave?: string;
   numero?: string;
   serie?: string;
   caminho_xml_nota_fiscal?: string;

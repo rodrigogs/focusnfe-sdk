@@ -16,6 +16,8 @@ Todas as operacoes utilizam uma referencia unica (`ref`) definida por voce ao cr
 
 A emissao de NFSe e assincrona, pois depende da comunicacao com o webservice da prefeitura. Utilize `get()` para consultar o status ate que seja `autorizado` ou `erro_autorizacao`.
 
+**Status (`NfseStatus`)** Os status possiveis sao: `processando_autorizacao`, `autorizado`, `cancelado`, `erro_autorizacao`.
+
 **Estrutura Prestador/Tomador/Servico**
 
 A NFSe exige dados do prestador (quem presta o servico), do tomador (quem contrata o servico) e do servico prestado, organizados em objetos separados.
@@ -183,7 +185,7 @@ interface NfseServico {
 interface NfseResponse {
   cnpj_prestador?: string;
   ref?: string;
-  status: string;
+  status: NfseStatus;
   numero?: string;
   numero_rps?: string;
   serie_rps?: string;

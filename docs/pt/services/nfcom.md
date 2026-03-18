@@ -16,6 +16,8 @@ Todas as operacoes utilizam uma referencia unica (`ref`) definida por voce ao cr
 
 A emissao de NFCom e assincrona. Utilize `get()` para consultar o status ate que seja `autorizado` ou `erro_autorizacao`.
 
+**Status (`NfcomStatus`)** Os status possiveis sao: `processando_autorizacao`, `autorizado`, `cancelado`, `erro_autorizacao`.
+
 **Contingencia**
 
 A NFCom pode ser emitida em contingencia quando a SEFAZ esta indisponivel. Passe `{ contingencia: true }` no terceiro parametro de `create()`.
@@ -123,7 +125,7 @@ interface NfcomCreateOptions {
 interface NfcomResponse {
   cnpj_emitente?: string;
   ref?: string;
-  status: string;
+  status: NfcomStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
   chave?: string;
@@ -148,7 +150,7 @@ interface NfcomCancelParams {
 
 ```typescript
 interface NfcomCancelResponse {
-  status: string;
+  status: NfcomStatus;
   status_sefaz?: string;
   mensagem_sefaz?: string;
   caminho_xml?: string;

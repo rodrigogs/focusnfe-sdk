@@ -432,7 +432,7 @@ interface MunicipioResult {
   codigo_cnae_obrigatorio_nfse?: boolean | null
   item_lista_servico_obrigatorio_nfse?: boolean | null
   codigo_tributario_municipio_obrigatorio_nfse?: boolean | null
-  status_nfse?: string | null
+  status_nfse?: MunicipioStatusNfse | null
 }
 
 // --- Item Lista Servico ---
@@ -498,7 +498,7 @@ interface BackupResult {
 
 2. **Consulta de CNPJ**: Os dados retornados sao da base publica da Receita Federal e podem estar desatualizados em relacao ao cadastro oficial.
 
-3. **Municipios e NFSe**: O campo `nfse_habilitada` indica se o municipio ja foi integrado ao sistema. Os campos auxiliares (`requer_certificado_nfse`, `endereco_obrigatorio_nfse`, etc.) descrevem as regras especificas do municipio para emissao de NFSe.
+3. **Municipios e NFSe**: O campo `nfse_habilitada` indica se o municipio ja foi integrado ao sistema. Os campos auxiliares (`requer_certificado_nfse`, `endereco_obrigatorio_nfse`, etc.) descrevem as regras especificas do municipio para emissao de NFSe. **Status do Municipio (`MunicipioStatusNfse`)** Os valores possiveis sao: `ativo`, `fora_do_ar`, `pausado`, `em_implementacao`, `em_reimplementacao`, `inativo`, `nao_implementado`.
 
 4. **Itens de lista de servico e codigos tributarios**: Esses dados variam por municipio. Sempre consulte pelo `codigoMunicipio` (codigo IBGE) correto antes de emitir uma NFSe.
 
