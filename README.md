@@ -12,6 +12,8 @@
 
 SDK TypeScript para a API FocusNFe de emissao de documentos fiscais eletronicos brasileiros (NFe, NFCe, NFSe, CTe, MDFe, NFCom).
 
+> **Nota:** Este e um projeto open-source independente e **nao e uma implementacao oficial** da FocusNFe. Nao possui afiliacao, endosso ou suporte da FocusNFe ou de suas empresas relacionadas. Para a documentacao oficial da API, consulte [focusnfe.com.br/doc](https://focusnfe.com.br/doc/).
+
 [English version](./README.en.md) (coming soon)
 
 ## Features
