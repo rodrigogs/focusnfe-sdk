@@ -64,4 +64,11 @@ export class NfeRecebidasService extends BaseService {
       path: `/v2/nfes_recebidas/${chave}/manifesto`,
     });
   }
+
+  resendWebhook(chave: string): Promise<void> {
+    return this._request({
+      method: "POST",
+      path: `/v2/nfes_recebidas/${chave}/hook`,
+    });
+  }
 }

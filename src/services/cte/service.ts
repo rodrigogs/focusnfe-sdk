@@ -7,9 +7,9 @@ import type {
   CteCreateParams,
   CteDadosGtvParams,
   CteDadosGtvResponse,
-  CteDesacordoParams,
-  CteDesacordoResponse,
   CteOsCreateParams,
+  CtePrestacaoDesacordoParams,
+  CtePrestacaoDesacordoResponse,
   CteRegistroMultimodalParams,
   CteRegistroMultimodalResponse,
   CteResponse,
@@ -64,9 +64,9 @@ export class CteService extends BaseService {
 
   desacordo(
     ref: string,
-    params: CteDesacordoParams,
-  ): Promise<CteDesacordoResponse> {
-    return this._request<CteDesacordoResponse>({
+    params: CtePrestacaoDesacordoParams,
+  ): Promise<CtePrestacaoDesacordoResponse> {
+    return this._request<CtePrestacaoDesacordoResponse>({
       method: "POST",
       path: `/v2/cte/${ref}/desacordo`,
       body: params,

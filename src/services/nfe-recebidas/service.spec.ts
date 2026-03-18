@@ -228,4 +228,18 @@ describe("NfeRecebidasService", () => {
       expect(init.method).toBe("GET");
     });
   });
+
+  describe("resendWebhook", () => {
+    it("sends POST /v2/nfes_recebidas/CHAVE/hook", async () => {
+      const chave = "41171179060190000182550010000002661875685069";
+      const { fetch, spy } = createMockFetch({ status: 200, body: {} });
+      const service = createService(fetch);
+
+      await service.resendWebhook(chave);
+
+      const [url, init] = spy.mock.calls[0];
+      expect(url.toString()).toContain(`/v2/nfes_recebidas/${chave}/hook`);
+      expect(init.method).toBe("POST");
+    });
+  });
 });

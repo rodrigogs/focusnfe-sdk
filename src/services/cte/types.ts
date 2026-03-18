@@ -253,11 +253,11 @@ export interface CteCartaCorrecaoResponse {
 
 // ── CTe Desacordo ───────────────────────────────────────────────────
 
-export interface CteDesacordoParams {
+export interface CtePrestacaoDesacordoParams {
   observacoes: string;
 }
 
-export interface CteDesacordoResponse {
+export interface CtePrestacaoDesacordoResponse {
   status_sefaz: string;
   mensagem_sefaz: string;
   status: string;
