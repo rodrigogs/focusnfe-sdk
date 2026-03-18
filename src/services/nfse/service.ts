@@ -1,5 +1,6 @@
 import { BaseService } from "../../core/base-service.js";
 import type {
+  NfseCancelParams,
   NfseCancelResponse,
   NfseCreateParams,
   NfseEmailParams,
@@ -24,10 +25,11 @@ export class NfseService extends BaseService {
     });
   }
 
-  cancel(ref: string): Promise<NfseCancelResponse> {
+  cancel(ref: string, params: NfseCancelParams): Promise<NfseCancelResponse> {
     return this._request({
       method: "DELETE",
       path: `/v2/nfse/${ref}`,
+      body: params,
     });
   }
 

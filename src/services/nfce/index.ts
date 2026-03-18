@@ -11,6 +11,7 @@ export type {
   NfceFormaPagamento,
   NfceInutilizacaoParams,
   NfceInutilizacaoResponse,
+  NfceInutilizacoesListParams,
   NfceItem,
   NfceResponse,
 } from "./types.js";

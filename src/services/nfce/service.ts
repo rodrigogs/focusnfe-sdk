@@ -9,6 +9,7 @@ import type {
   NfceEmailParams,
   NfceInutilizacaoParams,
   NfceInutilizacaoResponse,
+  NfceInutilizacoesListParams,
   NfceResponse,
 } from "./types.js";
 
@@ -56,10 +57,16 @@ export class NfceService extends BaseService {
     });
   }
 
-  inutilizacoes(): Promise<NfceInutilizacaoResponse[]> {
+  inutilizacoes(
+    params: NfceInutilizacoesListParams,
+  ): Promise<NfceInutilizacaoResponse[]> {
     return this._request({
       method: "GET",
       path: "/v2/nfce/inutilizacoes",
+      query: params as unknown as Record<
+        string,
+        string | number | boolean | undefined
+      >,
     });
   }
 

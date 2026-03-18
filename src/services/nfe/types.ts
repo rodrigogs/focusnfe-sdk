@@ -284,6 +284,15 @@ export interface NfeInutilizacaoParams {
   justificativa: string;
 }
 
+export interface NfeInutilizacoesListParams {
+  cnpj?: string;
+  cpf?: string;
+  data_recebimento_inicial?: string;
+  data_recebimento_final?: string;
+  numero_inicial?: string | number;
+  numero_final?: string | number;
+}
+
 export interface NfeInutilizacaoResponse {
   status?: string;
   status_sefaz?: string;

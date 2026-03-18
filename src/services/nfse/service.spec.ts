@@ -94,18 +94,23 @@ describe("NfseService", () => {
   });
 
   describe("cancel", () => {
-    it("sends DELETE /v2/nfse/{ref}", async () => {
+    it("sends DELETE /v2/nfse/{ref} with justificativa body", async () => {
       const body = { status: "cancelado" };
       const { fetch, spy } = createMockFetch({ status: 200, body });
       const service = createService(fetch);
 
-      const result = await service.cancel("ref_123");
+      const result = await service.cancel("ref_123", {
+        justificativa: "Cancelamento por erro nos dados da nota fiscal",
+      });
 
       expect(result.status).toBe("cancelado");
 
       const [url, init] = spy.mock.calls[0]!;
       expect(url.toString()).toContain("/v2/nfse/ref_123");
       expect(init.method).toBe("DELETE");
+      expect(JSON.parse(init.body as string)).toEqual({
+        justificativa: "Cancelamento por erro nos dados da nota fiscal",
+      });
     });
   });
 

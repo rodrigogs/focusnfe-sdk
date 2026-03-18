@@ -1,3 +1,18 @@
+// --- Query/options types ---
+
+export interface EmpresaListParams {
+  cnpj?: string;
+  cpf?: string;
+}
+
+export interface EmpresaCreateOptions {
+  dryRun?: boolean;
+}
+
+export interface EmpresaUpdateOptions {
+  dryRun?: boolean;
+}
+
 // --- Input types ---
 
 export interface EmpresaCreateParams {
@@ -145,7 +160,7 @@ export type EmpresaUpdateParams = Partial<EmpresaCreateParams>;
 // --- Response types ---
 
 export interface Empresa {
-  id: number;
+  id: string | number;
   nome: string;
   nome_fantasia: string;
   cnpj: string;

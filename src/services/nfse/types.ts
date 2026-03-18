@@ -116,6 +116,10 @@ export interface NfseResponse {
   mensagem_sefaz?: string;
 }
 
+export interface NfseCancelParams {
+  justificativa: string;
+}
+
 export interface NfseEmailParams {
   emails: string[];
 }

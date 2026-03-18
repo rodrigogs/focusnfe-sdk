@@ -3,6 +3,8 @@
 export interface NfeRecebidasListParams {
   cnpj: string;
   versao?: number;
+  pendente?: boolean;
+  pendente_ciencia?: boolean;
 }
 
 // --- Response types ---

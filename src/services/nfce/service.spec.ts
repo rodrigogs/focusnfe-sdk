@@ -168,18 +168,21 @@ describe("NfceService", () => {
   });
 
   describe("inutilizacoes", () => {
-    it("sends GET /v2/nfce/inutilizacoes", async () => {
+    it("sends GET /v2/nfce/inutilizacoes with cnpj query param", async () => {
       const body = [{ status: "autorizado", serie: "1", numero_inicial: "10" }];
       const { fetch, spy } = createMockFetch({ status: 200, body });
       const service = createService(fetch);
 
-      const result = await service.inutilizacoes();
+      const result = await service.inutilizacoes({
+        cnpj: "51916585000125",
+      });
 
       expect(result).toHaveLength(1);
       expect(result[0]!.status).toBe("autorizado");
 
       const [url, init] = spy.mock.calls[0]!;
       expect(url.toString()).toContain("/v2/nfce/inutilizacoes");
+      expect(url.toString()).toContain("cnpj=51916585000125");
       expect(init.method).toBe("GET");
     });
   });

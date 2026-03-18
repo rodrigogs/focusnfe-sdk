@@ -166,6 +166,15 @@ export interface NfceInutilizacaoParams {
   justificativa: string;
 }
 
+export interface NfceInutilizacoesListParams {
+  cnpj?: string;
+  cpf?: string;
+  data_recebimento_inicial?: string;
+  data_recebimento_final?: string;
+  numero_inicial?: string | number;
+  numero_final?: string | number;
+}
+
 export interface NfceInutilizacaoResponse {
   status?: string;
   status_sefaz?: string;

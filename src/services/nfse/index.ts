@@ -1,5 +1,6 @@
 export { NfseService } from "./service.js";
 export type {
+  NfseCancelParams,
   NfseCancelResponse,
   NfseCreateParams,
   NfseEmailParams,

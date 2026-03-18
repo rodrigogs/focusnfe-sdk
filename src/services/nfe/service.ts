@@ -18,6 +18,7 @@ import type {
   NfeInsucessoEntregaResponse,
   NfeInutilizacaoParams,
   NfeInutilizacaoResponse,
+  NfeInutilizacoesListParams,
   NfeResponse,
   NfeWebhookResponse,
 } from "./types.js";
@@ -106,10 +107,16 @@ export class NfeService extends BaseService {
     });
   }
 
-  inutilizacoes(): Promise<NfeInutilizacaoResponse[]> {
+  inutilizacoes(
+    params: NfeInutilizacoesListParams,
+  ): Promise<NfeInutilizacaoResponse[]> {
     return this._request({
       method: "GET",
       path: "/v2/nfe/inutilizacoes",
+      query: params as unknown as Record<
+        string,
+        string | number | boolean | undefined
+      >,
     });
   }
 

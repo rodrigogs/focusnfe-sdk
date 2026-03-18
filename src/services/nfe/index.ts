@@ -19,6 +19,7 @@ export type {
   NfeInsucessoEntregaResponse,
   NfeInutilizacaoParams,
   NfeInutilizacaoResponse,
+  NfeInutilizacoesListParams,
   NfeItem,
   NfeNotaReferenciada,
   NfeResponse,

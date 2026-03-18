@@ -3,6 +3,8 @@
 export interface NfseRecebidasListParams {
   cnpj: string;
   versao?: number;
+  completa?: boolean;
+  api_version?: string;
 }
 
 // --- Response types ---

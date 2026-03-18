@@ -52,6 +52,7 @@ describe("EmpresasService", () => {
 
       const [url, init] = spy.mock.calls[0];
       expect(url.toString()).toContain("/v2/empresas");
+      expect(url.toString()).not.toContain("dry_run");
       expect(init.method).toBe("POST");
       expect(JSON.parse(init.body as string)).toEqual({
         nome: "Nome da empresa Ltda",
@@ -69,6 +70,33 @@ describe("EmpresasService", () => {
         uf: "PR",
         habilita_nfe: true,
       });
+    });
+
+    it("adds dry_run=1 query param when dryRun is true", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: { id: 123, nome: "Test", nome_fantasia: "Test", cnpj: "123" },
+      });
+      const service = createService(fetch);
+
+      await service.create(
+        {
+          nome: "Test",
+          nome_fantasia: "Test",
+          cnpj: "123",
+          regime_tributario: 1,
+          logradouro: "Rua A",
+          numero: "1",
+          bairro: "B",
+          cep: "80000000",
+          municipio: "Curitiba",
+          uf: "PR",
+        },
+        { dryRun: true },
+      );
+
+      const [url] = spy.mock.calls[0];
+      expect(url.toString()).toContain("dry_run=1");
     });
   });
 
@@ -102,6 +130,19 @@ describe("EmpresasService", () => {
       const [url, init] = spy.mock.calls[0];
       expect(url.toString()).toContain("/v2/empresas");
       expect(init.method).toBe("GET");
+    });
+
+    it("passes cnpj filter as query param", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: [{ id: 1, nome: "A", nome_fantasia: "A", cnpj: "123" }],
+      });
+      const service = createService(fetch);
+
+      await service.list({ cnpj: "10964044000164" });
+
+      const [url] = spy.mock.calls[0];
+      expect(url.toString()).toContain("cnpj=10964044000164");
     });
   });
 

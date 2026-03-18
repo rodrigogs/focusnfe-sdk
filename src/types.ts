@@ -28,6 +28,7 @@ export type {
   NfeInsucessoEntregaResponse,
   NfeInutilizacaoParams,
   NfeInutilizacaoResponse,
+  NfeInutilizacoesListParams,
   NfeItem,
   NfeNotaReferenciada,
   NfeResponse,
@@ -47,12 +48,14 @@ export type {
   NfceFormaPagamento,
   NfceInutilizacaoParams,
   NfceInutilizacaoResponse,
+  NfceInutilizacoesListParams,
   NfceItem,
   NfceResponse,
 } from "./services/nfce/index.js";
 
 // NFSe
 export type {
+  NfseCancelParams,
   NfseCancelResponse,
   NfseCreateParams,
   NfseEmailParams,
@@ -152,7 +155,10 @@ export type {
 // Empresas
 export type {
   Empresa,
+  EmpresaCreateOptions,
   EmpresaCreateParams,
+  EmpresaListParams,
+  EmpresaUpdateOptions,
   EmpresaUpdateParams,
 } from "./services/empresas/index.js";
 
