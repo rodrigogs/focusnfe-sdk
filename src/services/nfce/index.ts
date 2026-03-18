@@ -13,5 +13,4 @@ export type {
   NfceInutilizacaoResponse,
   NfceItem,
   NfceResponse,
-  NfceWebhookResponse,
 } from "./types.js";

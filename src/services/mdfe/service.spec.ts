@@ -203,19 +203,4 @@ describe("MdfeService", () => {
       expect(result).toEqual(responseBody);
     });
   });
-
-  // ── resendWebhook ─────────────────────────────────────────────
-
-  describe("resendWebhook", () => {
-    it("sends POST to /v2/mdfe/REF/hook with no body", async () => {
-      const responseBody = { status: "ok" };
-      const { service, spy } = setup(responseBody);
-
-      const result = await service.resendWebhook("ref9");
-
-      expect(callMethod(spy)).toBe("POST");
-      expect(callUrl(spy)).toContain("/v2/mdfe/ref9/hook");
-      expect(result).toEqual(responseBody);
-    });
-  });
 });

@@ -1,5 +1,3 @@
-/* v8 ignore start -- type-only file, no runtime code */
-
 // ── MDFe Create ─────────────────────────────────────────────────────
 
 export interface MdfeMunicipioCarregamento {
@@ -141,10 +139,4 @@ export interface MdfeEncerrarResponse {
   mensagem_sefaz: string;
   status: string;
   caminho_xml?: string;
-}
-
-// ── MDFe Webhook ────────────────────────────────────────────────────
-
-export interface MdfeWebhookResponse {
-  status: string;
 }

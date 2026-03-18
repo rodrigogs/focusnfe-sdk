@@ -1,5 +1,3 @@
-/* v8 ignore start -- type-only file, no runtime code */
-
 // Core types
 export type { FocusNFeErrorDetail } from "./core/errors.js";
 export type { BinaryResponse, HttpMethod, RequestConfig } from "./core/http.js";
@@ -51,7 +49,6 @@ export type {
   NfceInutilizacaoResponse,
   NfceItem,
   NfceResponse,
-  NfceWebhookResponse,
 } from "./services/nfce/index.js";
 
 // NFSe
@@ -119,7 +116,6 @@ export type {
   MdfeNotaFiscal,
   MdfePercurso,
   MdfeResponse,
-  MdfeWebhookResponse,
 } from "./services/mdfe/index.js";
 
 // NFCom

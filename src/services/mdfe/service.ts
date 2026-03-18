@@ -10,12 +10,11 @@ import type {
   MdfeEncerrarParams,
   MdfeEncerrarResponse,
   MdfeResponse,
-  MdfeWebhookResponse,
 } from "./types.js";
 
 export class MdfeService extends BaseService {
   create(ref: string, params: MdfeCreateParams): Promise<MdfeResponse> {
-    return this._request<MdfeResponse>({
+    return this._request({
       method: "POST",
       path: "/v2/mdfe",
       query: { ref },
@@ -24,7 +23,7 @@ export class MdfeService extends BaseService {
   }
 
   get(ref: string, completa?: boolean): Promise<MdfeResponse> {
-    return this._request<MdfeResponse>({
+    return this._request({
       method: "GET",
       path: `/v2/mdfe/${ref}`,
       query: completa ? { completa: 1 } : undefined,
@@ -32,7 +31,7 @@ export class MdfeService extends BaseService {
   }
 
   cancel(ref: string, params: MdfeCancelParams): Promise<MdfeCancelResponse> {
-    return this._request<MdfeCancelResponse>({
+    return this._request({
       method: "DELETE",
       path: `/v2/mdfe/${ref}`,
       body: params,
@@ -43,7 +42,7 @@ export class MdfeService extends BaseService {
     ref: string,
     params: MdfeCondutorParams,
   ): Promise<MdfeCondutorResponse> {
-    return this._request<MdfeCondutorResponse>({
+    return this._request({
       method: "POST",
       path: `/v2/mdfe/${ref}/inclusao_condutor`,
       body: params,
@@ -51,7 +50,7 @@ export class MdfeService extends BaseService {
   }
 
   incluirDfe(ref: string, params: MdfeDfeParams): Promise<MdfeDfeResponse> {
-    return this._request<MdfeDfeResponse>({
+    return this._request({
       method: "POST",
       path: `/v2/mdfe/${ref}/inclusao_dfe`,
       body: params,
@@ -62,17 +61,10 @@ export class MdfeService extends BaseService {
     ref: string,
     params: MdfeEncerrarParams,
   ): Promise<MdfeEncerrarResponse> {
-    return this._request<MdfeEncerrarResponse>({
+    return this._request({
       method: "POST",
       path: `/v2/mdfe/${ref}/encerrar`,
       body: params,
-    });
-  }
-
-  resendWebhook(ref: string): Promise<MdfeWebhookResponse> {
-    return this._request<MdfeWebhookResponse>({
-      method: "POST",
-      path: `/v2/mdfe/${ref}/hook`,
     });
   }
 }

@@ -246,4 +246,25 @@ describe("requestBinary", () => {
     expect(err).toBeInstanceOf(FocusNFeConnectionError);
     expect(err.message).toBe("Unknown network error");
   });
+
+  it("forwards body on POST requests", async () => {
+    const { fetch, spy } = createMockFetch({
+      status: 200,
+      body: "pdf-bytes",
+      headers: { "content-type": "application/pdf" },
+    });
+    const options = createTestOptions({ fetch });
+
+    await requestBinary(options, {
+      method: "POST",
+      path: "/v2/nfe/danfe_preview",
+      body: { natureza_operacao: "VENDA" },
+    });
+
+    const [, init] = spy.mock.calls[0]!;
+    expect(init.method).toBe("POST");
+    expect(JSON.parse(init.body as string)).toEqual({
+      natureza_operacao: "VENDA",
+    });
+  });
 });

@@ -16,5 +16,4 @@ export type {
   MdfeNotaFiscal,
   MdfePercurso,
   MdfeResponse,
-  MdfeWebhookResponse,
 } from "./types.js";

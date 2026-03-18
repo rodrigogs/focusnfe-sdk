@@ -10,7 +10,6 @@ import type {
   NfceInutilizacaoParams,
   NfceInutilizacaoResponse,
   NfceResponse,
-  NfceWebhookResponse,
 } from "./types.js";
 
 export class NfceService extends BaseService {
@@ -86,13 +85,6 @@ export class NfceService extends BaseService {
     return this._request({
       method: "DELETE",
       path: `/v2/nfce/${ref}/econf/${protocolo}`,
-    });
-  }
-
-  resendWebhook(ref: string): Promise<NfceWebhookResponse> {
-    return this._request({
-      method: "POST",
-      path: `/v2/nfce/${ref}/hook`,
     });
   }
 }

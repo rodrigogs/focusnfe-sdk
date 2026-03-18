@@ -1,5 +1,3 @@
-/* v8 ignore start -- type-only file, no runtime code */
-
 // ── CTe Create ──────────────────────────────────────────────────────
 
 export interface CteQuantidade {

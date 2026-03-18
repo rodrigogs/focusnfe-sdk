@@ -254,18 +254,4 @@ describe("NfceService", () => {
       expect(init.body).toBeUndefined();
     });
   });
-
-  describe("resendWebhook", () => {
-    it("sends POST /v2/nfce/REF/hook without body", async () => {
-      const { fetch, spy } = createMockFetch({ status: 200, body: {} });
-      const service = createService(fetch);
-
-      await service.resendWebhook("ref123");
-
-      const [url, init] = spy.mock.calls[0]!;
-      expect(url.toString()).toContain("/v2/nfce/ref123/hook");
-      expect(init.method).toBe("POST");
-      expect(init.body).toBeUndefined();
-    });
-  });
 });

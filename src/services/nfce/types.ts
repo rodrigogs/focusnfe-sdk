@@ -219,9 +219,3 @@ export interface NfceEconfCancelResponse {
   numero_cancelamento_conciliacao_financeira?: number;
   [key: string]: unknown;
 }
-
-// --- Webhook ---
-
-export interface NfceWebhookResponse {
-  [key: string]: unknown;
-}

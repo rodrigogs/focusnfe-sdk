@@ -18,7 +18,7 @@ import type {
 
 export class CteService extends BaseService {
   create(ref: string, params: CteCreateParams): Promise<CteResponse> {
-    return this._request<CteResponse>({
+    return this._request({
       method: "POST",
       path: "/v2/cte",
       query: { ref },
@@ -27,7 +27,7 @@ export class CteService extends BaseService {
   }
 
   createOs(ref: string, params: CteOsCreateParams): Promise<CteResponse> {
-    return this._request<CteResponse>({
+    return this._request({
       method: "POST",
       path: "/v2/cte_os",
       query: { ref },
@@ -36,7 +36,7 @@ export class CteService extends BaseService {
   }
 
   get(ref: string, completa?: boolean): Promise<CteResponse> {
-    return this._request<CteResponse>({
+    return this._request({
       method: "GET",
       path: `/v2/cte/${ref}`,
       query: completa ? { completa: 1 } : undefined,
@@ -44,7 +44,7 @@ export class CteService extends BaseService {
   }
 
   cancel(ref: string, params: CteCancelParams): Promise<CteCancelResponse> {
-    return this._request<CteCancelResponse>({
+    return this._request({
       method: "DELETE",
       path: `/v2/cte/${ref}`,
       body: params,
@@ -55,7 +55,7 @@ export class CteService extends BaseService {
     ref: string,
     params: CteCartaCorrecaoParams,
   ): Promise<CteCartaCorrecaoResponse> {
-    return this._request<CteCartaCorrecaoResponse>({
+    return this._request({
       method: "POST",
       path: `/v2/cte/${ref}/carta_correcao`,
       body: params,
@@ -66,7 +66,7 @@ export class CteService extends BaseService {
     ref: string,
     params: CtePrestacaoDesacordoParams,
   ): Promise<CtePrestacaoDesacordoResponse> {
-    return this._request<CtePrestacaoDesacordoResponse>({
+    return this._request({
       method: "POST",
       path: `/v2/cte/${ref}/desacordo`,
       body: params,
@@ -77,7 +77,7 @@ export class CteService extends BaseService {
     ref: string,
     params: CteRegistroMultimodalParams,
   ): Promise<CteRegistroMultimodalResponse> {
-    return this._request<CteRegistroMultimodalResponse>({
+    return this._request({
       method: "POST",
       path: `/v2/cte/${ref}/registro_multimodal`,
       body: params,
@@ -88,7 +88,7 @@ export class CteService extends BaseService {
     ref: string,
     params: CteDadosGtvParams,
   ): Promise<CteDadosGtvResponse> {
-    return this._request<CteDadosGtvResponse>({
+    return this._request({
       method: "POST",
       path: `/v2/cte/${ref}/dados_gtv`,
       body: params,
@@ -96,7 +96,7 @@ export class CteService extends BaseService {
   }
 
   resendWebhook(ref: string): Promise<CteWebhookResponse> {
-    return this._request<CteWebhookResponse>({
+    return this._request({
       method: "POST",
       path: `/v2/cte/${ref}/hook`,
     });

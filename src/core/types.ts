@@ -1,4 +1,3 @@
-/* v8 ignore start -- type-only file, no runtime code */
 export type FocusNFeEnvironment = "HOMOLOGACAO" | "PRODUCTION";
 
 export interface FocusNFeClientOptions {

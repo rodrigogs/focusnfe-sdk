@@ -119,6 +119,7 @@ export async function requestBinary(
     const response = await options.fetch(url.toString(), {
       method: config.method,
       headers: buildHeaders(options),
+      body: config.body ? JSON.stringify(config.body) : undefined,
       signal: AbortSignal.timeout(options.timeout),
     });
 
