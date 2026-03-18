@@ -85,7 +85,6 @@ export type {
   CteCancelResponse,
   CteCartaCorrecaoParams,
   CteCartaCorrecaoResponse,
-  CteCorrecao,
   CteCreateParams,
   CteDadosGtvParams,
   CteDadosGtvResponse,

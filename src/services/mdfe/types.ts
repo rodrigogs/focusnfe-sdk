@@ -62,7 +62,7 @@ export interface MdfeResponse {
   status: string;
   status_sefaz?: string;
   mensagem_sefaz?: string;
-  chave_mdfe?: string;
+  chave?: string;
   numero?: string;
   serie?: string;
   modelo?: string;

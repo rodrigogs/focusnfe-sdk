@@ -197,7 +197,7 @@ export interface CteResponse {
   status: string;
   status_sefaz?: string;
   mensagem_sefaz?: string;
-  chave_cte?: string;
+  chave?: string;
   numero?: string;
   serie?: string;
   modelo?: string;
@@ -229,16 +229,12 @@ export interface CteCancelResponse {
 
 // ── CTe Carta de Correcao ───────────────────────────────────────────
 
-export interface CteCorrecao {
+export interface CteCartaCorrecaoParams {
   grupo_corrigido?: string;
   campo_corrigido: string;
   valor_corrigido: string;
   numero_item_grupo_corrigido?: number;
   campo_api?: number;
-}
-
-export interface CteCartaCorrecaoParams {
-  correcoes: CteCorrecao[];
 }
 
 export interface CteCartaCorrecaoResponse {

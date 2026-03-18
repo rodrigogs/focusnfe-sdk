@@ -154,7 +154,7 @@ describe("CteService", () => {
   // ── cartaCorrecao ─────────────────────────────────────────────
 
   describe("cartaCorrecao", () => {
-    it("sends POST to /v2/cte/REF/carta_correcao with correcoes body", async () => {
+    it("sends POST to /v2/cte/REF/carta_correcao with flat correction fields", async () => {
       const responseBody = {
         status_sefaz: "135",
         mensagem_sefaz: "Evento registrado",
@@ -165,13 +165,9 @@ describe("CteService", () => {
       const { service, spy } = setup(responseBody);
 
       const params = {
-        correcoes: [
-          {
-            grupo_corrigido: "ide",
-            campo_corrigido: "uf_inicio",
-            valor_corrigido: "PR",
-          },
-        ],
+        campo_corrigido: "uf_inicio",
+        valor_corrigido: "PR",
+        grupo_corrigido: "ide",
       };
       const result = await service.cartaCorrecao("ref7", params);
 
