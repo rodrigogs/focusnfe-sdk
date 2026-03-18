@@ -1,0 +1,23 @@
+export { CteService } from "./service.js";
+export type {
+  CteCancelParams,
+  CteCancelResponse,
+  CteCartaCorrecaoParams,
+  CteCartaCorrecaoResponse,
+  CteCorrecao,
+  CteCreateParams,
+  CteDadosGtvParams,
+  CteDadosGtvResponse,
+  CteDesacordoParams,
+  CteDesacordoResponse,
+  CteDocumentoReferenciado,
+  CteDuplicata,
+  CteNfe,
+  CteOsCreateParams,
+  CteQuantidade,
+  CteRegistroMultimodalParams,
+  CteRegistroMultimodalResponse,
+  CteResponse,
+  CteSeguroCarga,
+  CteWebhookResponse,
+} from "./types.js";

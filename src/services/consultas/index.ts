@@ -1,0 +1,22 @@
+export { ConsultasService } from "./service.js";
+export type {
+  BackupEntry,
+  BackupResult,
+  BlockedEmailResult,
+  CepQueryParams,
+  CepResult,
+  CfopQueryParams,
+  CfopResult,
+  CnaeQueryParams,
+  CnaeResult,
+  CnpjEndereco,
+  CnpjResult,
+  CodigosTributariosMunicipioParams,
+  CodigoTributarioMunicipio,
+  ItemListaServico,
+  ItensListaServicoParams,
+  MunicipioQueryParams,
+  MunicipioResult,
+  NcmQueryParams,
+  NcmResult,
+} from "./types.js";
