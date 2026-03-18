@@ -16,10 +16,11 @@ export class NfcomService extends BaseService {
     });
   }
 
-  get(ref: string): Promise<NfcomResponse> {
+  get(ref: string, completa?: boolean): Promise<NfcomResponse> {
     return this._request({
       method: "GET",
       path: `/v2/nfcom/${ref}`,
+      query: completa ? { completa: 1 } : undefined,
     });
   }
 

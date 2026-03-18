@@ -19,10 +19,11 @@ export class NfseNacionalService extends BaseService {
     });
   }
 
-  get(ref: string): Promise<NfseNacionalResponse> {
+  get(ref: string, completa?: boolean): Promise<NfseNacionalResponse> {
     return this._request({
       method: "GET",
       path: `/v2/nfsen/${ref}`,
+      query: completa ? { completa: 1 } : undefined,
     });
   }
 

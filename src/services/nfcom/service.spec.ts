@@ -64,7 +64,22 @@ describe("NfcomService", () => {
 
       const [url, init] = spy.mock.calls[0]!;
       expect(url.toString()).toContain("/v2/nfcom/teste_nfcom");
+      expect(url.toString()).not.toContain("completa");
       expect(init.method).toBe("GET");
+    });
+
+    it("adds completa=1 when completa is true", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: { ref: "teste_nfcom", status: "autorizado" },
+      });
+      const service = createService(fetch);
+
+      await service.get("teste_nfcom", true);
+
+      const [url] = spy.mock.calls[0]!;
+      expect(url.toString()).toContain("/v2/nfcom/teste_nfcom");
+      expect(url.toString()).toContain("completa=1");
     });
   });
 

@@ -70,7 +70,22 @@ describe("NfseNacionalService", () => {
 
       const [url, init] = spy.mock.calls[0]!;
       expect(url.toString()).toContain("/v2/nfsen/ref_456");
+      expect(url.toString()).not.toContain("completa");
       expect(init.method).toBe("GET");
+    });
+
+    it("adds completa=1 when completa is true", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: { ref: "ref_456", status: "autorizado" },
+      });
+      const service = createService(fetch);
+
+      await service.get("ref_456", true);
+
+      const [url] = spy.mock.calls[0]!;
+      expect(url.toString()).toContain("/v2/nfsen/ref_456");
+      expect(url.toString()).toContain("completa=1");
     });
   });
 

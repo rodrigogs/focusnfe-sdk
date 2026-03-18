@@ -50,6 +50,27 @@ describe("ConsultasService", () => {
     });
   });
 
+  describe("ncmByCodigo", () => {
+    it("sends GET /v2/ncms/CODIGO", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: {
+          codigo: "90049090",
+          descricao_completa: "Óculos para correção",
+        },
+      });
+      const service = createService(fetch);
+
+      const result = await service.ncmByCodigo("90049090");
+
+      expect(result.codigo).toBe("90049090");
+
+      const [url, init] = spy.mock.calls[0];
+      expect(url.toString()).toContain("/v2/ncms/90049090");
+      expect(init.method).toBe("GET");
+    });
+  });
+
   describe("cfop", () => {
     it("sends GET /v2/cfops with query params", async () => {
       const { fetch, spy } = createMockFetch({
@@ -71,6 +92,27 @@ describe("ConsultasService", () => {
       const [url, init] = spy.mock.calls[0];
       expect(url.toString()).toContain("/v2/cfops");
       expect(url.toString()).toContain("codigo=2");
+      expect(init.method).toBe("GET");
+    });
+  });
+
+  describe("cfopByCodigo", () => {
+    it("sends GET /v2/cfops/CODIGO", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: {
+          codigo: "2151",
+          descricao: "Transferência p/ industrialização",
+        },
+      });
+      const service = createService(fetch);
+
+      const result = await service.cfopByCodigo("2151");
+
+      expect(result.codigo).toBe("2151");
+
+      const [url, init] = spy.mock.calls[0];
+      expect(url.toString()).toContain("/v2/cfops/2151");
       expect(init.method).toBe("GET");
     });
   });
@@ -165,6 +207,24 @@ describe("ConsultasService", () => {
       const [url, init] = spy.mock.calls[0];
       expect(url.toString()).toContain("/v2/codigos_cnae");
       expect(url.toString()).toContain("descricao=informatica");
+      expect(init.method).toBe("GET");
+    });
+  });
+
+  describe("cnaeByCodigo", () => {
+    it("sends GET /v2/codigos_cnae/CODIGO", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: { codigo: "8599603", descricao: "Treinamento em informática" },
+      });
+      const service = createService(fetch);
+
+      const result = await service.cnaeByCodigo("8599603");
+
+      expect(result.codigo).toBe("8599603");
+
+      const [url, init] = spy.mock.calls[0];
+      expect(url.toString()).toContain("/v2/codigos_cnae/8599603");
       expect(init.method).toBe("GET");
     });
   });
@@ -264,6 +324,26 @@ describe("ConsultasService", () => {
     });
   });
 
+  describe("itemListaServicoByCodigo", () => {
+    it("sends GET /v2/municipios/CODIGO/itens_lista_servico/CODIGO_ITEM", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: { codigo: "1.06", descricao: "Assessoria em informática" },
+      });
+      const service = createService(fetch);
+
+      const result = await service.itemListaServicoByCodigo("4307807", "1.06");
+
+      expect(result.codigo).toBe("1.06");
+
+      const [url, init] = spy.mock.calls[0];
+      expect(url.toString()).toContain(
+        "/v2/municipios/4307807/itens_lista_servico/1.06",
+      );
+      expect(init.method).toBe("GET");
+    });
+  });
+
   describe("codigosTributariosMunicipio", () => {
     it("sends GET /v2/municipios/CODIGO/codigos_tributarios_municipio with params", async () => {
       const { fetch, spy } = createMockFetch({
@@ -303,6 +383,29 @@ describe("ConsultasService", () => {
       expect(url.toString()).toContain(
         "/v2/municipios/4307807/codigos_tributarios_municipio",
       );
+    });
+  });
+
+  describe("codigoTributarioMunicipioByCodigo", () => {
+    it("sends GET /v2/municipios/CODIGO/codigos_tributarios_municipio/CODIGO_TRIB", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: { codigo: "8394", descricao: "Serviço de transporte" },
+      });
+      const service = createService(fetch);
+
+      const result = await service.codigoTributarioMunicipioByCodigo(
+        "4307807",
+        "8394",
+      );
+
+      expect(result.codigo).toBe("8394");
+
+      const [url, init] = spy.mock.calls[0];
+      expect(url.toString()).toContain(
+        "/v2/municipios/4307807/codigos_tributarios_municipio/8394",
+      );
+      expect(init.method).toBe("GET");
     });
   });
 

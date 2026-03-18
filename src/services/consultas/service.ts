@@ -31,6 +31,13 @@ export class ConsultasService extends BaseService {
     });
   }
 
+  ncmByCodigo(codigo: string): Promise<NcmResult> {
+    return this._request({
+      method: "GET",
+      path: `/v2/ncms/${codigo}`,
+    });
+  }
+
   cfop(params?: CfopQueryParams): Promise<CfopResult[]> {
     return this._request({
       method: "GET",
@@ -39,6 +46,13 @@ export class ConsultasService extends BaseService {
         string,
         string | number | boolean | undefined
       >,
+    });
+  }
+
+  cfopByCodigo(codigo: string): Promise<CfopResult> {
+    return this._request({
+      method: "GET",
+      path: `/v2/cfops/${codigo}`,
     });
   }
 
@@ -68,6 +82,13 @@ export class ConsultasService extends BaseService {
         string,
         string | number | boolean | undefined
       >,
+    });
+  }
+
+  cnaeByCodigo(codigo: string): Promise<CnaeResult> {
+    return this._request({
+      method: "GET",
+      path: `/v2/codigos_cnae/${codigo}`,
     });
   }
 
@@ -103,6 +124,16 @@ export class ConsultasService extends BaseService {
     });
   }
 
+  itemListaServicoByCodigo(
+    codigoMunicipio: string,
+    codigoItem: string,
+  ): Promise<ItemListaServico> {
+    return this._request({
+      method: "GET",
+      path: `/v2/municipios/${codigoMunicipio}/itens_lista_servico/${codigoItem}`,
+    });
+  }
+
   codigosTributariosMunicipio(
     codigoMunicipio: string,
     params?: CodigosTributariosMunicipioParams,
@@ -114,6 +145,16 @@ export class ConsultasService extends BaseService {
         string,
         string | number | boolean | undefined
       >,
+    });
+  }
+
+  codigoTributarioMunicipioByCodigo(
+    codigoMunicipio: string,
+    codigoTributario: string,
+  ): Promise<CodigoTributarioMunicipio> {
+    return this._request({
+      method: "GET",
+      path: `/v2/municipios/${codigoMunicipio}/codigos_tributarios_municipio/${codigoTributario}`,
     });
   }
 

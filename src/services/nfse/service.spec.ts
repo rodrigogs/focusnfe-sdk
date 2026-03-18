@@ -74,7 +74,22 @@ describe("NfseService", () => {
 
       const [url, init] = spy.mock.calls[0]!;
       expect(url.toString()).toContain("/v2/nfse/nfs-2");
+      expect(url.toString()).not.toContain("completa");
       expect(init.method).toBe("GET");
+    });
+
+    it("adds completa=1 when completa is true", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: { ref: "nfs-2", status: "autorizado" },
+      });
+      const service = createService(fetch);
+
+      await service.get("nfs-2", true);
+
+      const [url] = spy.mock.calls[0]!;
+      expect(url.toString()).toContain("/v2/nfse/nfs-2");
+      expect(url.toString()).toContain("completa=1");
     });
   });
 
