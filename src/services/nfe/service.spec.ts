@@ -405,6 +405,31 @@ describe("NfeService", () => {
     });
   });
 
+  describe("evento", () => {
+    it("sends POST /v2/nfe/REF/evento with tipo_evento body", async () => {
+      const body = {
+        status: "autorizado",
+        status_sefaz: "135",
+        mensagem_sefaz: "Evento registrado",
+      };
+      const { fetch, spy } = createMockFetch({ status: 200, body });
+      const service = createService(fetch);
+
+      const result = await service.evento("ref123", {
+        tipo_evento: "prorrogacao_suspensao_icms",
+        itens_pedido: [{ numero_item: 1, quantidade_item: 1.0 }],
+      });
+
+      expect(result.status).toBe("autorizado");
+
+      const [url, init] = spy.mock.calls[0]!;
+      expect(url.toString()).toContain("/v2/nfe/ref123/evento");
+      expect(init.method).toBe("POST");
+      const parsed = JSON.parse(init.body as string);
+      expect(parsed.tipo_evento).toBe("prorrogacao_suspensao_icms");
+    });
+  });
+
   describe("resendWebhook", () => {
     it("sends POST /v2/nfe/REF/hook without body", async () => {
       const { fetch, spy } = createMockFetch({ status: 200, body: {} });

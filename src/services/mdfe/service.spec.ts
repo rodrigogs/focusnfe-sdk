@@ -55,6 +55,16 @@ describe("MdfeService", () => {
       expect(callBody(spy)).toEqual(params);
       expect(result).toEqual(responseBody);
     });
+
+    it("adds contingencia=1 query param when option is set", async () => {
+      const { service, spy } = setup({ status: "processando_autorizacao" });
+      await service.create(
+        "ref1",
+        { serie: "1" } as Parameters<typeof service.create>[1],
+        { contingencia: true },
+      );
+      expect(callUrl(spy)).toContain("contingencia=1");
+    });
   });
 
   // ── get ─────────────────────────────────────────────────────────

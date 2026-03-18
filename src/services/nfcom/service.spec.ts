@@ -33,6 +33,23 @@ describe("NfcomService", () => {
       const parsed = JSON.parse(init.body as string);
       expect(parsed.cnpj_emitente).toBe("53681445000141");
     });
+
+    it("adds contingencia=1 query param when option is set", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: { status: "processando_autorizacao" },
+      });
+      const service = createService(fetch);
+
+      await service.create(
+        "teste_nfcom",
+        { cnpj_emitente: "53681445000141" },
+        { contingencia: true },
+      );
+
+      const [url] = spy.mock.calls[0]!;
+      expect(url.toString()).toContain("contingencia=1");
+    });
   });
 
   describe("get", () => {

@@ -13,6 +13,8 @@ export type {
   NfeEconfParams,
   NfeEconfResponse,
   NfeEmailParams,
+  NfeEventoParams,
+  NfeEventoResponse,
   NfeFormaPagamento,
   NfeImportacaoParams,
   NfeInsucessoEntregaParams,

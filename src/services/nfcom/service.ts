@@ -2,16 +2,21 @@ import { BaseService } from "../../core/base-service.js";
 import type {
   NfcomCancelParams,
   NfcomCancelResponse,
+  NfcomCreateOptions,
   NfcomCreateParams,
   NfcomResponse,
 } from "./types.js";
 
 export class NfcomService extends BaseService {
-  create(ref: string, params: NfcomCreateParams): Promise<NfcomResponse> {
+  create(
+    ref: string,
+    params: NfcomCreateParams,
+    options?: NfcomCreateOptions,
+  ): Promise<NfcomResponse> {
     return this._request({
       method: "POST",
       path: "/v2/nfcom",
-      query: { ref },
+      query: { ref, ...(options?.contingencia ? { contingencia: 1 } : {}) },
       body: params,
     });
   }

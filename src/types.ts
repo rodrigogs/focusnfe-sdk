@@ -22,6 +22,8 @@ export type {
   NfeEconfParams,
   NfeEconfResponse,
   NfeEmailParams,
+  NfeEventoParams,
+  NfeEventoResponse,
   NfeFormaPagamento,
   NfeImportacaoParams,
   NfeInsucessoEntregaParams,
@@ -108,6 +110,7 @@ export type {
   MdfeCondutorParams,
   MdfeCondutorResponse,
   MdfeConhecimentoTransporte,
+  MdfeCreateOptions,
   MdfeCreateParams,
   MdfeDfeDocumento,
   MdfeDfeParams,
@@ -125,6 +128,7 @@ export type {
 export type {
   NfcomCancelParams,
   NfcomCancelResponse,
+  NfcomCreateOptions,
   NfcomCreateParams,
   NfcomResponse,
 } from "./services/nfcom/index.js";

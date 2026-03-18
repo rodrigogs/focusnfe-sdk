@@ -13,6 +13,8 @@ import type {
   NfeEconfParams,
   NfeEconfResponse,
   NfeEmailParams,
+  NfeEventoParams,
+  NfeEventoResponse,
   NfeImportacaoParams,
   NfeInsucessoEntregaParams,
   NfeInsucessoEntregaResponse,
@@ -156,6 +158,14 @@ export class NfeService extends BaseService {
     return this._request({
       method: "DELETE",
       path: `/v2/nfe/${ref}/econf/${protocolo}`,
+    });
+  }
+
+  evento(ref: string, params: NfeEventoParams): Promise<NfeEventoResponse> {
+    return this._request({
+      method: "POST",
+      path: `/v2/nfe/${ref}/evento`,
+      body: params,
     });
   }
 

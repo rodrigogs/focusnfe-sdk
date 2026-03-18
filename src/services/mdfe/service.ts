@@ -4,6 +4,7 @@ import type {
   MdfeCancelResponse,
   MdfeCondutorParams,
   MdfeCondutorResponse,
+  MdfeCreateOptions,
   MdfeCreateParams,
   MdfeDfeParams,
   MdfeDfeResponse,
@@ -13,11 +14,15 @@ import type {
 } from "./types.js";
 
 export class MdfeService extends BaseService {
-  create(ref: string, params: MdfeCreateParams): Promise<MdfeResponse> {
+  create(
+    ref: string,
+    params: MdfeCreateParams,
+    options?: MdfeCreateOptions,
+  ): Promise<MdfeResponse> {
     return this._request({
       method: "POST",
       path: "/v2/mdfe",
-      query: { ref },
+      query: { ref, ...(options?.contingencia ? { contingencia: 1 } : {}) },
       body: params,
     });
   }

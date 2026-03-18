@@ -354,6 +354,20 @@ export interface NfeEconfCancelResponse {
   [key: string]: unknown;
 }
 
+// --- Evento genérico ---
+
+export interface NfeEventoParams {
+  tipo_evento: string;
+  [key: string]: unknown;
+}
+
+export interface NfeEventoResponse {
+  status?: string;
+  status_sefaz?: string;
+  mensagem_sefaz?: string;
+  [key: string]: unknown;
+}
+
 // --- Webhook ---
 
 export interface NfeWebhookResponse {

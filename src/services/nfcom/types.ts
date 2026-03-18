@@ -1,3 +1,7 @@
+export interface NfcomCreateOptions {
+  contingencia?: boolean;
+}
+
 export interface NfcomCreateParams {
   cnpj_emitente: string;
   [key: string]: unknown;

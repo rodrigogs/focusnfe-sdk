@@ -1,3 +1,7 @@
+export interface MdfeCreateOptions {
+  contingencia?: boolean;
+}
+
 // ── MDFe Create ─────────────────────────────────────────────────────
 
 export interface MdfeMunicipioCarregamento {

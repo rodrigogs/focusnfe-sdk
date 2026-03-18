@@ -5,6 +5,7 @@ export type {
   MdfeCondutorParams,
   MdfeCondutorResponse,
   MdfeConhecimentoTransporte,
+  MdfeCreateOptions,
   MdfeCreateParams,
   MdfeDfeDocumento,
   MdfeDfeParams,
