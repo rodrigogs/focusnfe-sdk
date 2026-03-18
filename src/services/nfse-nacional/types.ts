@@ -59,6 +59,7 @@ export interface NfseNacionalResponse {
   caminho_xml_nota_fiscal?: string;
   caminho_xml_cancelamento?: string;
   erros?: NfseNacionalResponseError[];
+  [key: string]: unknown;
 }
 
 export interface NfseNacionalCancelParams {
@@ -68,4 +69,5 @@ export interface NfseNacionalCancelParams {
 export interface NfseNacionalCancelResponse {
   status: NfseNacionalStatus;
   erros?: NfseNacionalResponseError[];
+  [key: string]: unknown;
 }

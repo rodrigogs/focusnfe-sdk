@@ -13,7 +13,6 @@ import type {
   CteRegistroMultimodalParams,
   CteRegistroMultimodalResponse,
   CteResponse,
-  CteWebhookResponse,
 } from "./types.js";
 
 export class CteService extends BaseService {
@@ -95,7 +94,7 @@ export class CteService extends BaseService {
     });
   }
 
-  resendWebhook(ref: string): Promise<CteWebhookResponse> {
+  resendWebhook(ref: string): Promise<void> {
     return this._request({
       method: "POST",
       path: `/v2/cte/${ref}/hook`,

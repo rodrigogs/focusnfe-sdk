@@ -124,6 +124,7 @@ export interface NfseResponse {
   erros?: NfseResponseError[];
   status_sefaz?: string;
   mensagem_sefaz?: string;
+  [key: string]: unknown;
 }
 
 export interface NfseCancelParams {
@@ -137,4 +138,5 @@ export interface NfseEmailParams {
 export interface NfseCancelResponse {
   status: NfseStatus;
   erros?: NfseResponseError[];
+  [key: string]: unknown;
 }

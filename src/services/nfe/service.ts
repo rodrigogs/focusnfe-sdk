@@ -22,7 +22,6 @@ import type {
   NfeInutilizacaoResponse,
   NfeInutilizacoesListParams,
   NfeResponse,
-  NfeWebhookResponse,
 } from "./types.js";
 
 export class NfeService extends BaseService {
@@ -169,7 +168,7 @@ export class NfeService extends BaseService {
     });
   }
 
-  resendWebhook(ref: string): Promise<NfeWebhookResponse> {
+  resendWebhook(ref: string): Promise<void> {
     return this._request({
       method: "POST",
       path: `/v2/nfe/${ref}/hook`,

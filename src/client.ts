@@ -3,6 +3,7 @@ import {
   FOCUSNFE_DEFAULT_ENVIRONMENT,
   FOCUSNFE_DEFAULT_TIMEOUT,
 } from "./core/constants.js";
+import { FocusNFeError } from "./core/errors.js";
 import {
   type BinaryResponse,
   request,
@@ -39,6 +40,9 @@ export class FocusNFeClient {
   private readonly _options: NormalizedOptions;
 
   constructor(options: FocusNFeClientOptions) {
+    if (!options.token) {
+      throw new FocusNFeError("FocusNFe API token is required");
+    }
     this._options = normalizeOptions(options);
   }
 

@@ -38,10 +38,12 @@ function buildUrl(
   return url;
 }
 
-function buildHeaders(options: NormalizedOptions): Record<string, string> {
+function buildHeaders(
+  options: NormalizedOptions,
+  accept: string = "application/json",
+): Record<string, string> {
   const headers: Record<string, string> = {
-    Accept: "application/json",
-    "Content-Type": "application/json",
+    Accept: accept,
     Authorization: `Basic ${btoa(options.token + ":")}`,
   };
 
@@ -59,7 +61,7 @@ interface ErrorBody {
 }
 
 function isErrorBody(value: unknown): value is ErrorBody {
-  return typeof value === "object" && value !== null;
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 async function buildApiError(response: Response): Promise<FocusNFeApiError> {
@@ -86,11 +88,16 @@ export async function request<T>(
   config: RequestConfig,
 ): Promise<T> {
   const url = buildUrl(options.baseUrl, config.path, config.query);
+  const headers = buildHeaders(options);
+
+  if (config.body) {
+    headers["Content-Type"] = "application/json";
+  }
 
   try {
     const response = await options.fetch(url.toString(), {
       method: config.method,
-      headers: buildHeaders(options),
+      headers,
       body: config.body ? JSON.stringify(config.body) : undefined,
       signal: AbortSignal.timeout(options.timeout),
     });
@@ -114,11 +121,16 @@ export async function requestBinary(
   config: RequestConfig,
 ): Promise<BinaryResponse> {
   const url = buildUrl(options.baseUrl, config.path, config.query);
+  const headers = buildHeaders(options, "*/*");
+
+  if (config.body) {
+    headers["Content-Type"] = "application/json";
+  }
 
   try {
     const response = await options.fetch(url.toString(), {
       method: config.method,
-      headers: buildHeaders(options),
+      headers,
       body: config.body ? JSON.stringify(config.body) : undefined,
       signal: AbortSignal.timeout(options.timeout),
     });
