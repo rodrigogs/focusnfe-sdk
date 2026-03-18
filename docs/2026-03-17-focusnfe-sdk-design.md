@@ -77,15 +77,13 @@ FocusNFeError (base)
 ├── FocusNFeApiError {
 │     status: number
 │     body: unknown
-│     codigo: string          // FocusNFe error code
-│     mensagem: string        // FocusNFe error message
+│     codigo: string          // FocusNFe error code (root-level "codigo")
+│     mensagem: string        // FocusNFe error message (root-level "mensagem")
 │     erros: FocusNFeErrorDetail[]  // Optional field-level errors
 │   }
-├── FocusNFeConnectionError
-└── FocusNFeTimeoutError
+└── FocusNFeConnectionError   // Wraps all network/timeout errors (matches asaas-sdk pattern)
 
 interface FocusNFeErrorDetail {
-  codigo?: string
   mensagem?: string
   campo?: string
 }
@@ -421,3 +419,13 @@ Identical to asaas-sdk:
 - Response types named `{Resource}Response` or `{Resource}{Action}Response`
 - All fiscal document request bodies use FocusNFe's snake_case field names (not camelCase) — the SDK passes them through as-is to match API docs
 - Types are intentionally loose (`string` for dates, `number | string` for decimal values) to match FocusNFe's flexible API — the API accepts both string and number for many fields
+- Response types use FocusNFe's snake_case fields as-is (no transformation) to maintain 1:1 API mapping
+- SDK v1.x supports FocusNFe API v2 only
+
+## Exports
+
+Core types exported from root `index.ts` (matching asaas-sdk):
+- `FocusNFeClient`, `FocusNFeClientOptions`, `FocusNFeEnvironment`
+- `FocusNFeError`, `FocusNFeApiError`, `FocusNFeConnectionError`, `FocusNFeErrorDetail`
+- `RequestConfig`, `BinaryResponse`, `HttpMethod`
+- All service classes and their associated types from each `services/*/index.ts`
