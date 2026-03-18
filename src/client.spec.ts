@@ -54,6 +54,12 @@ describe("FocusNFeClient", () => {
       expect(client).toBeInstanceOf(FocusNFeClient);
     });
 
+    it("throws when token is empty", () => {
+      expect(() => new FocusNFeClient({ token: "" })).toThrow(
+        "FocusNFe API token is required",
+      );
+    });
+
     it("accepts custom baseUrl override", () => {
       const { fetch, spy } = createMockFetch({ status: 200, body: {} });
       const client = new FocusNFeClient({

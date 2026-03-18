@@ -198,6 +198,19 @@ describe("EmpresasService", () => {
         email: "novo@example.com",
       });
     });
+
+    it("adds dry_run=1 query param when dryRun is true", async () => {
+      const { fetch, spy } = createMockFetch({
+        status: 200,
+        body: { id: 123, nome: "Test", nome_fantasia: "Test", cnpj: "123" },
+      });
+      const service = createService(fetch);
+
+      await service.update(123, { nome: "Test" }, { dryRun: true });
+
+      const [url] = spy.mock.calls[0];
+      expect(url.toString()).toContain("dry_run=1");
+    });
   });
 
   describe("remove", () => {
