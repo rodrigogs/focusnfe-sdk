@@ -20,6 +20,14 @@ export interface NfcomResponse {
   caminho_xml?: string;
   caminho_danfecom?: string;
   caminho_xml_cancelamento?: string;
+  // Fields returned when completa=1
+  requisicao?: Record<string, unknown>;
+  protocolo?: Record<string, unknown>;
+  requisicao_cancelamento?: Record<string, unknown>;
+  protocolo_cancelamento?: Record<string, unknown>;
+  // Contingency fields
+  contingencia_offline?: boolean;
+  contingencia_offline_efetivada?: boolean;
 }
 
 export interface NfcomCancelParams {

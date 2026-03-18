@@ -35,6 +35,12 @@ export interface Webhook {
   event: WebhookEvent;
   cnpj?: string;
   cpf?: string;
+  nome?: string;
+  empresa_id?: string | number;
+  count_since?: string;
+  request_count?: number;
+  error_count?: number;
+  success_count?: number;
 }
 
 export interface WebhookRemoveResult extends Webhook {
